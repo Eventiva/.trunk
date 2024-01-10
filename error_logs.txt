@@ -4,7 +4,10 @@ import os
 # Define file name
 file_name = "error_logs.txt"
 
-# Open file in write mode
+def capture_error_logs(error_logs):
+    file_name = "error_logs.txt"
+    with open(file_name, "w") as file:
+        file.write(error_logs)
 with open(file_name, "w") as file:
     # Write error logs to file
     file.write("Error log 1\n")
