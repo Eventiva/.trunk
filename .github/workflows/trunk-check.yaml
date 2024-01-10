@@ -44,12 +44,10 @@ jobs:
           
       - name: Capture and Display Error Logs
         if: failure()
+        continue-on-failure: true
         run: |
-          steps:
-            - name: Capture and Display Error Logs
-              id: capture-error-logs
-              run: |
-                echo ::error::Error logs captured: ${{ steps.trunk_check.outputs.logs }}
+          run: |
+            echo ::error::Error logs captured: ${{ steps.trunk_check.outputs.logs }}
         runs: |
           using: actions/github-script@v5
           with:
