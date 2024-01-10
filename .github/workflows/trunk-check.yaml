@@ -14,6 +14,7 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    continue-on-error: true
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
