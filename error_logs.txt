@@ -15,4 +15,4 @@ with open(file_name, "w") as file:
     file.write("Error log 3\n")
 
 # Close the file
-file.close()
+
