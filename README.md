@@ -9,6 +9,6 @@ Issue Title: [Sweep GHA Fix]
 [here][check-github-integration].
 
 Your `.trunk` repository should always be created by generating it from the
-[`trunk-io/.trunk-fix`](https://github.com/trunk-io/.trunk-template) repository.
+[`trunk-io/.trunk-fix`](https://github.com/trunk-io/.trunk-fix) repository.
 
 [check-github-integration]: [Visit the troubleshooting guide](https://docs.trunk.io/docs/check-github-integration) for instructions on how to fix the issue
