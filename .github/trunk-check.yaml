@@ -1,0 +1,17 @@
+# Trunk Check Configuration
+
+# Add your Trunk Check configuration here
+# Example:
+# checks:
+#   - name: My Check
+#     description: This is a sample check
+#     pattern: 'TODO'
+#     severity: error
+#     ignore:
+#       - 'vendor/**'
+#       - 'node_modules/**'
+#     exclude:
+#       - 'README.md'
+#       - 'LICENSE'
+
+# Add more checks as needed
