@@ -31,7 +31,8 @@ jobs:
 
       # Update the Trunk Check setup instructions
 
-      - name: Set up Trunk Check
+      - name: Install Trunk Check
+        uses: trunk-io/trunk-action@v4
         run: |
           # Provide detailed instructions for setting up Trunk Check
           # Add specific setup instructions for Trunk Check here
@@ -42,12 +43,19 @@ jobs:
           # Add specific setup instructions for Trunk Check here
 
       - name: Install dependencies
-        run: npm ci --some-flag
+        run: npm ci
 
       - name: Run tests
         run: npm test
 
-      - name: Set up Trunk Check
+      - - name: Set up Trunk Check
+        run: |
+          # Provide detailed instructions for setting up Trunk Check
+          # Reference the README.md file for detailed instructions
+          # on how to set up the GitHub Actions integration
+
+          # Detailed setup instructions for Trunk Check:
+          # Add your detailed setup instructions here
         run: |
           # Provide detailed instructions for setting up Trunk Check
           # Reference the README.md file for detailed instructions
@@ -59,7 +67,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
   - name: Install dependencies
             uses: trunk-io/trunk-action@v4
         - name: Run tests
+        run: npm test
         run: npm test
