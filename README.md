@@ -1,6 +1,7 @@
 # What is `.trunk`?
 
 Trunk Check uses `.trunk` to find issues in your repositories and pull requests. The GitHub Actions run failed with the following error logs:
+Issue Title: [Sweep GHA Fix]
 ```
 // Trunk Check uses `.trunk` to find issues in your repositories and pull requests. The GitHub Actions run failed with the following error logs:
 ```{{ERROR_LOGS}}```
