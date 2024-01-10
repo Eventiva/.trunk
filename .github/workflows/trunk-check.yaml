@@ -20,6 +20,6 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v1\n        with:\n          check-mode: all\n          command: npm run build\n          entrypoint: ./scripts/check.js
         with:
           check-mode: payload
