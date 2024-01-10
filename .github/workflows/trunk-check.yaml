@@ -1,5 +1,5 @@
-name: Trunk Check
-run-name: MeaningfulName
+name: TrunkWorkflowWithLoggingAndErrorHandling
+run-name: TrunkCheckRun
 on:
   workflow_dispatch:
     inputs:
@@ -18,7 +18,16 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: MeaningfulStepName
+      - name: TrunkActionStep
+        id: trunk_action_step
         uses: trunk-io/trunk-action@v2
+          with:
+            check-mode: payload
+        if: failure()
+        name: ErrorLoggingStep
+        id: error_logging_step
+        run: |
+          run_id=$(echo $GITHUB_RUN_ID)
+          echo "An error occurred during the trunk-io/trunk-action step in run $run_id"
         with:
           check-mode: payload
