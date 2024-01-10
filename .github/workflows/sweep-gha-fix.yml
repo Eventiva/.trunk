@@ -16,7 +16,7 @@ jobs:
       - name: Fix the issue
         run: |
           npm install
-          npm build
+          npm run build
 
       - name: Commit changes
         run: |
