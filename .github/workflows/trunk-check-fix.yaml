@@ -1,0 +1,33 @@
+name: Trunk Check Fix
+run-name: TrunkCheckFix
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: For invocation by Trunk Check
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ fromJSON(inputs.payload).checkJobName }}
+    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    concurrency:
+      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v1
+        with:
+          check-mode: payload
+      - name: Error Handling
+        run: |
+          # Add error handling logic here
+          echo "Error occurred during Trunk Check"
+      - name: Logging
+        run: |
+          # Add logging logic here
+          echo "Trunk Check completed successfully"
