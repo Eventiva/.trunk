@@ -1,0 +1,14 @@
+import requests
+
+def generate_trunk_file():
+    template_repo_url = "https://raw.githubusercontent.com/trunk-io/.trunk-template/main/.trunk"
+    response = requests.get(template_repo_url)
+    if response.status_code == 200:
+        trunk_contents = response.text
+        with open(".trunk", "w") as trunk_file:
+            trunk_file.write(trunk_contents)
+            print(".trunk file generated successfully.")
+    else:
+        print("Failed to retrieve .trunk template from the repository.")
+
+generate_trunk_file()
