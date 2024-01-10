@@ -31,7 +31,10 @@ jobs:
 
       # Set up Trunk Check and run tests
 
-      - name: Set up Trunk Check
+          - name: Set up Trunk Check
+        run: |
+          # Instructions to set up Trunk Check
+          # Add specific setup instructions here
         run: |
           # Instructions to set up Trunk Check
           # Add specific setup instructions here
