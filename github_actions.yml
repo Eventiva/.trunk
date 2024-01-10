@@ -30,19 +30,13 @@ jobs:
         uses: actions/checkout@v2.3
 
       # Update the Trunk Check setup instructions
-
-      - name: Install Trunk Check
-        uses: trunk-io/trunk-action@v4
+      - name: Set up Trunk Check
         run: |
           # Provide detailed instructions for setting up Trunk Check
           # Add specific setup instructions for Trunk Check here
 
-          - name: Set up Trunk Check
-        run: |
-          # Updated Trunk Check setup instructions
-          # Add specific setup instructions for Trunk Check here
-
       - name: Install dependencies
+        uses: trunk-io/trunk-action@v4
         run: npm ci
 
       - name: Run tests
@@ -64,7 +58,7 @@ jobs:
           # Detailed setup instructions for Trunk Check:
           # Add your detailed setup instructions here
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        # Remove duplicate 'uses: actions/setup-node@v3' step
         with:
           node-version: 14
         uses: actions/setup-node@v3
@@ -73,5 +67,6 @@ jobs:
   - name: Install dependencies
             uses: trunk-io/trunk-action@v4
         - name: Run tests
+          run: npm test
         run: npm test
         run: npm test
