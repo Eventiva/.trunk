@@ -1,5 +1,4 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Check Job
 on:
   workflow_dispatch:
     inputs:
@@ -17,6 +16,7 @@ jobs:
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
+    uses: ./.github/workflows/check-job.yaml
 
     steps:
       - name: Trunk Check
