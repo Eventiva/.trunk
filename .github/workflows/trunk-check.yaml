@@ -20,6 +20,6 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@latest
         with:
           check-mode: payload
