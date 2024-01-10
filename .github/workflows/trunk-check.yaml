@@ -1,7 +1,25 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Trunk Check Workflow
+run-name: Trunk Workflow - ${{ github.run_id }}
+on:
+  schedule:
+    cron: '0 0 * * *'
+  push:
+  pull_request:
+  repository_dispatch:
+
+permissions:
+  contents: read
 on:
   workflow_dispatch:
+    inputs:
+      payload:
+        description: For invocation by Trunk Check
+        required: false
+  schedule:
+    cron: '0 0 * * *'
+  push:
+  pull_request:
+  repository_dispatch:
     inputs:
       payload:
         description: For invocation by Trunk Check
@@ -14,6 +32,25 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+
+    steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y <dependency1>
+          sudo apt install -y <dependency2>
+          # Add other necessary dependencies
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v3
+        with:
+          check-mode: payload
+          # Add other necessary configuration options
+      - name: Handle Errors and Reporting
+        run: |
+          # Add steps to handle errors and report them in the workflow run logs
+      - name: Clean Up
+        run: |
+          # Add steps to clean up any temporary files or resources used during the workflow
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
