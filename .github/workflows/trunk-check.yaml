@@ -1,6 +1,9 @@
 name: Trunk Check
-run-name: TrunkCheck
+run-name: TrunkCheckFix
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       payload:
@@ -20,6 +23,12 @@ jobs:
 
     steps:
       - name: Trunk Check
+      run: |
+        # Add logging logic here
+        echo "Trunk Check completed successfully"
+      run: |
+        # Add error handling logic here
+        echo "Error occurred during Trunk Check"
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
