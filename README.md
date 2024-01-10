@@ -2,7 +2,8 @@
 
 Trunk Check uses `.trunk` to find issues in your repositories and pull requests. The GitHub Actions run failed with the following error logs:
 ```
-// Add error logs and relevant details here
+// Trunk Check uses `.trunk` to find issues in your repositories and pull requests. The GitHub Actions run failed with the following error logs:
+```[error logs here]```
 ```
 [here][check-github-integration].
 
