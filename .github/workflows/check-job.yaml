@@ -5,7 +5,7 @@ on:
     inputs:
       payload:
         description: For invocation by Trunk Check
-        required: true
+        required: false
 
 jobs:
   check:
