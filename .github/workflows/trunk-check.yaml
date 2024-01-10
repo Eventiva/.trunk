@@ -1,5 +1,5 @@
 name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+run-name: Fix failing GitHub Actions run
 on:
   workflow_dispatch:
     inputs:
