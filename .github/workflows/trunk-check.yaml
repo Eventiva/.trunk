@@ -1,5 +1,5 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Trunk Check with Error Handling
+run-name: Trunk Check with Error Handling - Run 1
 on:
   workflow_dispatch:
     inputs:
@@ -8,17 +8,40 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents: none
 
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
+      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}-trunk-check
+      strategy:
+        max-parallel: 1
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
 
     steps:
+      - name: Try Catch Block
+        run:
+          run: |
+            try
+              steps:
+                - name: Trunk Check
+                  run: |
+                    ...existing steps...
+              catch
+                steps:
+                  - name: Notify Failure
+                    run: echo 'Workflow Run failed, notifying user or team'
+                  - name: Notify Failure details
+                    run: echo 'Include details of the error in the notification'
+            finally
+              steps:
+                - name: Cleanup
+                  run: |
+                    ...cleanup steps...
+          
       - name: Trunk Check
         uses: trunk-io/trunk-action@latest
         with:
