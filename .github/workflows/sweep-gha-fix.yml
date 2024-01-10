@@ -1,0 +1,24 @@
+name: Sweep GHA Fix
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sweep-gha-fix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add additional steps to fix the failing GitHub Actions
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+          git add .
+          git commit -m "Fix failing GitHub Actions"
+          git push
