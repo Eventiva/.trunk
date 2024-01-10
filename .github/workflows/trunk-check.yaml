@@ -18,6 +18,7 @@ jobs:
     # Update the concurrency configuration based on specific requirements
       concurrency:
         group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+    cancel-in-progress: true
         cancel-in-progress: true
 
     steps:
