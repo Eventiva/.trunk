@@ -27,10 +27,16 @@ jobs:
           run: |
             try
               steps:
+              steps:
                 - name: Trunk Check
                   run: |
                     ...existing steps...
               catch
+                steps:
+                  - name: Notify Failure
+                    run: echo 'Workflow Run failed, notifying user or team'
+                  - name: Notify Failure details
+                    run: echo 'Include details of the error in the notification'
                 steps:
                   - name: Notify Failure
                     run: echo 'Workflow Run failed, notifying user or team'
@@ -43,6 +49,11 @@ jobs:
                     ...cleanup steps...
           
       - name: Capture and Display Error Logs
+        finally
+          steps:
+            - name: Cleanup
+              run: |
+                ...cleanup steps...
         if: failure()
         continue-on-failure: true
         run: |
