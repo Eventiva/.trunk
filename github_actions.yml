@@ -34,16 +34,16 @@ jobs:
       - name: Set up Trunk Check
         run: |
           # Instructions to set up Trunk Check
-          # Reference the README.md file for instructions
+          # Reference the README.md file for detailed instructions
           # on how to set up the GitHub Actions integration
 
-          # Example:
-          echo "Setting up Trunk Check"
+          # Instructions:
+          # Add your detailed setup instructions here
           - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - name: Install dependencies
-        run: npm ci
+      run: npm ci  # Install dependencies using npm ci
       - name: Run tests
         run: npm test
