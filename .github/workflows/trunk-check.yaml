@@ -1,6 +1,8 @@
 name: Trunk Check
 run-name: Fix failing GitHub Actions run
 on:
+  permissions:
+    contents: read
   workflow_dispatch:
     inputs:
       payload:
@@ -14,6 +16,8 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
 
