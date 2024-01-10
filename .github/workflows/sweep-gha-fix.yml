@@ -22,10 +22,14 @@ jobs:
         run: |
           git config --global user.name "Your Name"
           git config --global user.email "youremail@example.com"
-                    git add .
+          git add .
           git commit -m "Fix the issue and commit changes"
+          git push
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
