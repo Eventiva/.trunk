@@ -12,14 +12,14 @@ permissions:
 
 jobs:
   check:
+      name: Fix Failed GitHub Actions Run
     name: Descriptive Job Name
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+        runs-on: ubuntu-latest
     
     # Update the concurrency configuration based on specific requirements
       concurrency:
         group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
     cancel-in-progress: true
-        cancel-in-progress: true
 
     steps:
       - name: Trunk Check
