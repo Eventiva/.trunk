@@ -5,8 +5,6 @@
 The GitHub Actions run failed with the following error logs:
 
 ```bash
-# Add error logs here
-# Actual error messages from the failed GitHub Actions run
 - Error 1: Actual error message 1
 - Error 2: Actual error message 2
 ```
