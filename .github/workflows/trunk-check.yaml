@@ -42,7 +42,18 @@ jobs:
                   run: |
                     ...cleanup steps...
           
-      - name: Trunk Check
-        uses: trunk-io/trunk-action@latest
+      - name: Capture Error Logs
+        if: failure()
+        run: |
+          steps:
+            - name: Capture Error Logs
+              id: capture-error-logs
+              run: |
+                echo ::error::Error logs captured: ${{ steps.trunk_check.outputs.logs }}
+        runs: |
+          using: actions/github-script@v4
+          with:
+            script: |
+              // Your script code goes here
         with:
           check-mode: payload
