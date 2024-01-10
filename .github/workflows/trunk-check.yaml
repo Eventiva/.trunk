@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+
 
     steps:
       - name: Trunk Check
