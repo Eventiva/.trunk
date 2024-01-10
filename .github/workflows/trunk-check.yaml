@@ -20,6 +20,12 @@ jobs:
 
     steps:
       - name: Trunk Check
+        env:
+          ACTIONS_STEP_DEBUG: true
+        run: |
+          echo 'Additional logging or error handling goes here'
+          
         uses: trunk-io/trunk-action@v1
+        if: failure()
         with:
           check-mode: payload
