@@ -6,18 +6,16 @@ The GitHub Actions run failed with the following error logs:
 
 ```bash
 # Add error logs here
-# # Actual error messages from the failed GitHub Actions run
-- Error 1: Actual error message 1
-- Error 2: Actual error message 2
+# Actual error messages from the failed GitHub Actions run
+- Error 1: <error message 1>
+- Error 2: <error message 2>
 ```
 
 This repository is experiencing a failure in the GitHub Actions run. Below are the instructions to fix the failing GitHub Actions run:
 
-1. Ensure that the required environment variables are correctly set.
-2. Check for any changes in the workflow file that may have caused the failure.
+1. Ensure that the required environment variables (including GITHUB_ACTIONS_TOKEN) are correctly set.
+2. Review the workflow file to identify any changes that may have caused the failure.
 3. Review the error logs in the README.md file to identify the specific cause of the failure.
-   See the error logs section for relevant details.
-4. Make necessary changes to the code or configuration to address the issue.
 
 Trunk Check uses `.trunk` to find issues in your repositories and pull requests. Learn more
 [here][check-github-integration].
