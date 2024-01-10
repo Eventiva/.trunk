@@ -22,6 +22,6 @@ jobs:
           ENV_VAR: value
         strategy:
           fail-fast: false
-        continue-on-error: true
+        continue-on-error: false
         with:
           check-mode: payload
