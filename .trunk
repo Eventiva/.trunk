@@ -1,0 +1,35 @@
+class TrunkFile:
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+    def store_issue(self, issue):
+        # Store the issue information in the ".trunk" file
+        with open(self.file_path, "a") as file:
+            file.write(issue + "\n")
+
+    def get_issues(self):
+        # Retrieve the stored issue information from the ".trunk" file
+        with open(self.file_path, "r") as file:
+            issues = file.readlines()
+        return [issue.strip() for issue in issues]
+```
+
+The `TrunkFile` class represents the ".trunk" file. It has two methods:
+- `store_issue`: This method takes an `issue` as input and appends it to the ".trunk" file.
+- `get_issues`: This method reads the ".trunk" file and returns a list of stored issues.
+
+We will also need to update the necessary imports and variables in the existing codebase to use the `TrunkFile` class.
+
+For example, if there is a file named `main.py` that needs to interact with the ".trunk" file, we would update it as follows:
+
+```python
+from .trunk import TrunkFile
+
+trunk_file = TrunkFile(".trunk")
+
+# Store an issue
+trunk_file.store_issue("Issue 1")
+
+# Retrieve all stored issues
+issues = trunk_file.get_issues()
+print(issues)
