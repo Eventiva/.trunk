@@ -1,5 +1,6 @@
-name: Trunk Check
-run-name: Fix failing GitHub Actions run
+name: Trunk Check Workflow
+  description: Workflow for running Trunk Check jobs
+
 on:
   permissions:
     contents: read
@@ -13,17 +14,16 @@ permissions:
   contents: read
 
 jobs:
-  check:
-    name: ${{ fromJSON(inputs.payload).checkJobName }}
+  trunk_check:
+    name: Trunk Check Job
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    
     concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      group: valid-concurrency-group
 
 
     steps:
-      - name: Trunk Check
-        uses: trunk-io/trunk-action@v2
+      - name: Run Trunk Check
+        uses: trunk-io/trunk-action@v3
         with:
           check-mode: payload
