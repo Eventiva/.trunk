@@ -37,7 +37,7 @@ jobs:
           # Add specific setup instructions for Trunk Check here
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Run tests
         run: npm test
