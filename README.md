@@ -6,7 +6,7 @@ The GitHub Actions run failed with the following error logs:
 
 ```bash
 - Error 1: Actual error message 1
-- Error 2: Actual error message 2
+  - Error 2: Actual error message 2
 ```
 
 This repository is experiencing a failure in the GitHub Actions run. Below are the instructions to fix the failing GitHub Actions run:
