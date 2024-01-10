@@ -55,6 +55,6 @@ jobs:
         with:
           node-version: 14
   - name: Install dependencies
-      run: npm ci  # Install dependencies using npm ci
+    run: npm ci
         - name: Run tests
-        run: npm ci && npm run test
+        run: npm run test
