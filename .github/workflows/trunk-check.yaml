@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       payload:
+    description: The payload parameter
+    required: true
         description: For invocation by Trunk Check
         required: false
 
