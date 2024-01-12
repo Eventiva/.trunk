@@ -12,7 +12,16 @@ permissions:
 
 jobs:
   check:
-    name: ${{ fromJSON(inputs.payload).checkJobName }}
+    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    concurrency:
+      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v1
+        with:
+          check-mode: payload
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
