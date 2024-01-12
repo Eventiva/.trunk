@@ -16,9 +16,12 @@ jobs:
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
+    concurrency:
+      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      cancel-in-progress: true
 
     steps:
       - name: Sweep GHA Fix
         uses: trunk-io/trunk-action@v1
         with:
-          check-mode: payload
+          # Add any necessary inputs or modifications to the trunk-action configuration
