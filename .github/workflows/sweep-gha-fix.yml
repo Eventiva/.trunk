@@ -1,0 +1,33 @@
+name: Sweep GHA Fix
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sweep-gha-fix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run sweep-gha-fix script
+        run: npm run sweep-gha-fix
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "youremail@example.com"
+          git add .
+          git commit -m "Fix GitHub Actions issue"
+          git push
