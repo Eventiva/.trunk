@@ -20,6 +20,10 @@ jobs:
 
     steps:
       - name: Trunk Check
+        with:
+          required-parameter: value
+        with:
+          required-parameter: value
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
