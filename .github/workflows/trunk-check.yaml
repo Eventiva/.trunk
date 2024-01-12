@@ -1,4 +1,4 @@
-name: Trunk Check
+name: Descriptive Check Job
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
