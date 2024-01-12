@@ -1,0 +1,24 @@
+name: Sweep GHA Fix
+on:
+  workflow_dispatch:
+    inputs:
+      payload:
+        description: For invocation by Sweep GHA Fix
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: ${{ fromJSON(inputs.payload).checkJobName }}
+    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    concurrency:
+      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      cancel-in-progress: true
+
+    steps:
+      - name: Sweep GHA Fix
+        uses: trunk-io/trunk-action@v1
+        with:
+          check-mode: payload
