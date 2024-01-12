@@ -19,6 +19,11 @@ jobs:
       cancel-in-progress: true
 
     steps:
+      - name: Install Dependencies
+        run: |
+          npm install
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v2
       - name: Trunk Check
         uses: trunk-io/trunk-action@v2
         with:
