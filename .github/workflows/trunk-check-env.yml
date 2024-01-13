@@ -1,0 +1,14 @@
+name: Trunk Check Environment
+on:
+  workflow_run:
+    workflows: ["Trunk Check"]
+    types:
+      - completed
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Trunk Check Environment
+        run: |
+          echo "TRUNK_TEMPLATE_REPO=trunk-io/.trunk-template" >> $GITHUB_ENV
