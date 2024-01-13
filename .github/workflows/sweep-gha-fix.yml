@@ -1,0 +1,24 @@
+name: Sweep GHA Fix
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  sweep-gha-fix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run sweep-gha-fix script
+        run: |
+          # Add the necessary commands to fix the issue here
+          echo "Running sweep-gha-fix script"
+
+      # Add any additional steps or configurations as needed
