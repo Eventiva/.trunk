@@ -31,4 +31,4 @@ jobs:
       - name: Log Error Logs
         uses: trunk-io/trunk-action@v1
         with:
-          check-mode: payload
+          check-mode: true
