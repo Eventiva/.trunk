@@ -12,7 +12,8 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents:
+    check: read
 
 jobs:
   check:
@@ -24,6 +25,11 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v2
+        uses: trunk-io/trunk-action@v3
+          - name: Print Error Logs
+            if: failure()
+            run: |
+              echo 'Error logs:'
+              cat /path/to/error/logs
         with:
           check-mode: payload
