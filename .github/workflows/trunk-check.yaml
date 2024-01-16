@@ -25,7 +25,9 @@ jobs:
       - name: Log Error Logs
         run: |
           echo 'Error logs:'
-          # Add command to print or capture error logs for further analysis
+          # Add command to capture or print error logs for further analysis
+          # For example, you can use the following command to capture error logs in a file:
+          # command_to_run > error_logs.txt
       - name: Log Error Logs
         uses: trunk-io/trunk-action@v1
         with:
