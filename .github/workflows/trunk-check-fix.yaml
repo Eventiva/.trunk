@@ -24,6 +24,10 @@ steps:
     uses: trunk-io/trunk-action@latest
     with:
       check-mode: payload
+  - name: Handle Failure
+    run: |
+      echo 'Handling failure scenario'
+      echo 'Logging the error message'
 
 on:
   workflow_dispatch:
