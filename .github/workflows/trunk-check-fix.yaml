@@ -28,6 +28,8 @@ steps:
     run: |
       echo 'Handling failure scenario'
       echo 'Logging the error message'
+      echo 'Handling failure scenario'
+      echo 'Logging the error message'
 
 on:
   workflow_dispatch:
