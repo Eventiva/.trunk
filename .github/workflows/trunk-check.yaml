@@ -1,4 +1,8 @@
 name: Trunk Check
+  on:
+    push:
+      branches:
+        - main
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
