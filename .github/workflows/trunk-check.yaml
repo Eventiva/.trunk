@@ -31,5 +31,8 @@ jobs:
             run: |
               echo 'Error logs:'
               cat /path/to/error/logs
+            run: |
+              echo 'Error logs:'
+              cat /path/to/error/logs
         with:
           check-mode: payload
