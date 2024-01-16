@@ -26,8 +26,7 @@ steps:
       check-mode: payload
   - name: Handle Failure
     run: |
-      echo 'Handling failure scenario'
-      echo 'Logging the error message'
+      # Add code to handle failure scenarios and log error messages
       echo 'Handling failure scenario'
       echo 'Logging the error message'
 
