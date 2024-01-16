@@ -1,4 +1,6 @@
 name: Trunk Check
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -8,7 +10,8 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents:
+  check: read
 
 jobs:
   check:
@@ -19,7 +22,11 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Trunk Check
+      - name: Log Error Logs
+        run: |
+          echo 'Error logs:'
+          # Add command to print or capture error logs for further analysis
+      - name: Log Error Logs
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
