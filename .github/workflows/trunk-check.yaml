@@ -28,11 +28,11 @@ jobs:
         uses: trunk-io/trunk-action@v3
           - name: Print Detailed Error Logs
             if: failure()
-              - name: Print Error Logs
-                if: failure()
-                run: |
-                  echo 'Error logs:'
-                  cat /path/to/error/logs
+                    - name: Print Detailed Error Logs
+        if: failure()
+        run: |
+          echo 'Error logs:'
+          cat /path/to/error/logs
               echo 'Error logs:'
               cat /path/to/error/logs
             run: |
