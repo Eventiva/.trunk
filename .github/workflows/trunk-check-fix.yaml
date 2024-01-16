@@ -21,7 +21,7 @@ concurrency:
 
 steps:
   - name: Trunk Check
-    uses: trunk-io/trunk-action@v3
+    uses: trunk-io/trunk-action@latest
     with:
       check-mode: payload
 
@@ -41,10 +41,14 @@ jobs:
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@latest
+        with:
+          check-mode: payload
       cancel-in-progress: true
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v3
+        uses: trunk-io/trunk-action@latest
         with:
           check-mode: payload
