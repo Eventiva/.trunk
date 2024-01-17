@@ -1,4 +1,4 @@
-name: Trunk Check
+name: Descriptive Workflow Name
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Trunk Check
         - name: Trunk Check
-          uses: trunk-io/trunk-action@v2
+          uses: actions/checkout@v2
           with:
             check-mode: payload
             config-file: .trunk.yml
