@@ -1,4 +1,5 @@
 name: Trunk Check
+    if: failure()
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -9,10 +10,15 @@ on:
 
 permissions:
   contents: read
+  actions: read
+  secrets: write
 
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
+    if: failure()
+    run: |
+      echo 'Error logs: Add relevant error logs here'
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
@@ -21,5 +27,14 @@ jobs:
     steps:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v2
+        with:
+          check-mode: payload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ADDITIONAL_PARAM: value
+        with:
+          check-mode: payload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           check-mode: payload
