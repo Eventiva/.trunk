@@ -1,0 +1,27 @@
+# .trunk Template
+
+To set up the `.trunk` repository, follow these steps:
+
+1. Clone the `.trunk-template` repository:
+   ```
+   git clone https://github.com/trunk-io/.trunk-template.git
+   ```
+
+2. Create a new repository for your project on GitHub.
+
+3. Copy the contents of the `.trunk-template` repository to your new repository.
+
+4. Customize the `.trunk` configuration file:
+   - Open the `.trunk` file in your new repository.
+   - Update the necessary configuration options according to your project's requirements.
+
+5. Commit and push the changes to your new repository.
+
+6. Configure Trunk Check to monitor your repository:
+   - Go to the Trunk Check website (https://trunk.io).
+   - Sign in with your GitHub account.
+   - Add your repository to Trunk Check.
+
+7. Trunk Check will now start monitoring your repository for issues and pull requests.
+
+For more information, refer to the Trunk Check documentation: [https://docs.trunk.io/docs/check-github-integration](https://docs.trunk.io/docs/check-github-integration)
