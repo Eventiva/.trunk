@@ -18,7 +18,16 @@ on:
 
 jobs:
   generate_trunk_file:
-    runs-on: 
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
     workflow_dispatch: ubuntu-latest
 
     steps:
@@ -29,6 +38,14 @@ jobs:
 
       - name: Copy contents to .trunk file
         run: |
+          npm install
+      - name: Run tests
+        run: |
+          npm test
+      - name: Build and Deploy
+        run: |
+          npm build
+          npm deploy
           cd .trunk
           cd .trunk
           cp -R temp_dir/. .trunk
