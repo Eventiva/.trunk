@@ -22,7 +22,7 @@ jobs:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v2
         with:
-          check-mode: payload
-          additional-input: value
+          check-mode: ${{ fromJSON(inputs.payload).checkMode }}
+          additional-input: ${{ fromJSON(inputs.payload).additionalInput }}
         with:
           check-mode: payload
