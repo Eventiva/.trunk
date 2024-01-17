@@ -1,5 +1,5 @@
 # src/main.py
-from error_handler import ErrorLogHandler
+from src.error_handler import ErrorLogHandler
 
 # Add additional imports as needed
 
