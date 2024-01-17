@@ -16,7 +16,7 @@ jobs:
     runs-on: DesiredRunner
     concurrency:
       group: DesiredConcurrencyGroupHere
-      cancel-in-progress: false
+      cancel-in-progress: true
 
     steps:
       - name: DescriptiveStepName
