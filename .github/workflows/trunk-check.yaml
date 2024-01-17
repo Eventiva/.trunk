@@ -21,11 +21,7 @@ jobs:
     steps:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v3
-      with:
+        with:
           error-logs: ${{ steps.check.outputs.errorLogs }}
           error-message: ${{ steps.check.outputs.errorMessage }}
-        error-logs: ${{ steps.check.outputs.errorLogs }}
-        error-message: ${{ steps.check.outputs.errorMessage }}
-                  check-mode: payload
-          error-logs: ${{ steps.check.outputs.errorLogs }}
           error-message: ${{ steps.check.outputs.errorMessage }}
