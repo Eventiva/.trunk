@@ -13,12 +13,16 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on: ubuntu-latest
     concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+      group: custom-group
+      cancel-in-progress: false
 
-    steps:
+    steps: 
+      - name: Custom Check Job
+        uses: trunk-io/trunk-action@v2
+        with:
+          check-mode: payload
       - name: Trunk Check
         uses: trunk-io/trunk-action@v2
         with:
