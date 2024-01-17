@@ -23,8 +23,10 @@ runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
           - ubuntu-latest
 
     steps:
-            - name: Error Handling and Logging
-      - name: Error Handling and Logging
+            - name: Set up error handling
+      run: echo "Error handling setup"
+      - name: Log workflow status
+      run: echo "Workflow status logged"
 
     # Error Handling and Logging
     strategy:
