@@ -1,25 +1,33 @@
-name: Descriptive Workflow Name
-run-name: DesiredRunName
+name: Descriptive Workflow Name Updated
+run-name: UpdatedRunName
 on:
   workflow_dispatch:
+    workflow_check:
+      inputs:
+        payload:
+          description: For invocation by Trunk Check
+          required: false
     inputs:
       payload:
         description: For invocation by Trunk Check
         required: false
 
 permissions:
+  - repository_dispatch
   - workflow_dispatch
+  - repository_dispatch
 
 jobs:
   check:
-    name: DescriptiveJobName
+    name: UpdatedDescriptiveJobName
     runs-on: ubuntu-latest
     concurrency:
-      group: DesiredConcurrencyGroupHere
+      group: UpdatedConcurrencyGroupHere
+      cancel-in-progress: false
       cancel-in-progress: true
 
     steps:
-      - name: DescriptiveAndInformativeStepName
+      - name: UpdatedDescriptiveAndInformativeStepName
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.check_suite.head_sha }}
