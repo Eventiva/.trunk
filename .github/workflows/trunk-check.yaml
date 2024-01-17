@@ -25,6 +25,8 @@ jobs:
 
     steps:
       - name: Print Error Logs
+      - name: Print Error Logs
+      run: echo "$(<path_to_error_logs_file>)"
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
         with:
