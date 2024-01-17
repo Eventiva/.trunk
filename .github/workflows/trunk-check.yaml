@@ -2,10 +2,23 @@ name: Trunk Check Workflow
 run-name: Trunk Check Workflow Run
 on:
     workflow_dispatch:
+    on:
+      workflow_run:
+        workflows:
+          - generate-trunk-file
+        types:
+          - completed
+          - completed_with_conclusions
+      workflow_dispatch:
       inputs:
         payload:
           description: For invocation by Trunk Check
           required: true
+      workflow_dispatch:
+        inputs:
+          payload:
+            description: For invoking the generate-trunk-file workflow
+            required: false
   workflow_dispatch:
     inputs:
       payload:
@@ -28,7 +41,20 @@ jobs:
 
     steps:
       - name: Trunk Check
+        if: failure()
       - name: Trigger generate-trunk-file workflow
         uses: actions/checkout@v2
-      - name: Run generate-trunk-file workflow
-        uses: ./.github/workflows/generate-trunk-file.yaml
+      - name: Check generate-trunk-file workflow status
+        id: run_generate_trunk_file
+        uses: actions/github-script@0.9.0
+        with:
+          script: |
+            const { event, context, sha } = context;
+            const result = await github.actions.getWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: ${{ github.event.workflow_run.id }},
+            });
+            if (result.data.conclusion === 'failure') {
+              core.setFailed('The generate-trunk-file workflow failed. Please check the workflow run for details.');
+            }
