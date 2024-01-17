@@ -3,9 +3,18 @@ run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
     inputs:
-      payload:
+      checkWorkflowRunName:
         description: For invocation by Trunk Check
-        required: false
+        required: true
+      checkJobName:
+        description: For invocation by Trunk Check
+        required: true
+      checkJobRunsOn:
+        description: For invocation by Trunk Check
+        required: true
+      concurrencyGroup:
+        description: For invocation by Trunk Check
+        required: true
 
 permissions:
   contents: read
