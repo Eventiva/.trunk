@@ -1,13 +1,25 @@
 name: Generate Trunk File
 
 on:
+  workflow_dispatch:
+
+jobs:
+  generate_trunk_file:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    permissions:
+      contents: read
+
+on:
   push:
     branches:
       - main
 
 jobs:
   generate_trunk_file:
-    runs-on: ubuntu-latest
+    runs-  on:
+    workflow_dispatch: ubuntu-latest
 
     steps:
       - name: Clone trunk-io/.trunk-template repository
