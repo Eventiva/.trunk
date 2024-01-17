@@ -1,0 +1,52 @@
+# File: path/to/new_file_1.py
+
+def calculate_sum(a, b):
+    """
+    Calculates the sum of two numbers.
+
+    Args:
+        a (int): The first number.
+        b (int): The second number.
+
+    Returns:
+        int: The sum of the two numbers.
+    """
+    return a + b
+```
+
+This file contains a single function named `calculate_sum` that takes two integers as input and returns their sum.
+
+To integrate this file into the existing codebase, you can import it in any module or file where you need to perform addition operations. For example:
+
+```python
+# File: some_module.py
+
+from path.to.new_file_1 import calculate_sum
+
+result = calculate_sum(2, 3)
+print(result)  # Output: 5
+```
+
+Make sure to update the import statement and file path according to your project's directory structure.
+
+For testing purposes, you can write unit tests for the `calculate_sum` function. Here's an example of a test case using the `unittest` framework:
+
+```python
+import unittest
+from path.to.new_file_1 import calculate_sum
+
+class TestCalculateSum(unittest.TestCase):
+    def test_sum(self):
+        result = calculate_sum(2, 3)
+        self.assertEqual(result, 5)
+
+    def test_negative_numbers(self):
+        result = calculate_sum(-5, -10)
+        self.assertEqual(result, -15)
+
+    def test_zero(self):
+        result = calculate_sum(0, 0)
+        self.assertEqual(result, 0)
+
+if __name__ == '__main__':
+    unittest.main()
