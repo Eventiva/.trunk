@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   check:
-    name: ${{ fromJSON(inputs.payload).checkJobName }}
+    name: DescriptiveJobName
     runs-on: DesiredRunsOn
     concurrency:
       group: DesiredConcurrencyGroup
