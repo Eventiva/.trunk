@@ -1,4 +1,5 @@
 # src/main.py
+import module_name
 
 def handle_error_logs(error_logs):
     # Analyze the error logs and perform necessary actions to fix the issues
