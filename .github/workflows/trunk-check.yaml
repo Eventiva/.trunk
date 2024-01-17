@@ -20,9 +20,9 @@ jobs:
 
     steps:
           - name: Remove Existing Error Logs
-      continue-on-error: false
-      run: |
-        echo 'Error logs: '
+        continue-on-error: false
+        run: |
+        echo 'Remove existing error logs: '
         cat ${{ github.workspace }}/correct_path_to_error_logs
-          continue-on-error: true
+            continue-on-error: true
           uses: trunk-io/trunk-action@v2
