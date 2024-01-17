@@ -1,0 +1,21 @@
+name: Save Error Logs
+on:
+  workflow_run:
+    workflows: ["Trunk Check Workflow"]
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+jobs:
+  save_error_logs:
+    name: Save Error Logs Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Save Error Logs to File
+        run: |
+          echo 'Save error logs to file:'
+          cat ${{ env.ERROR_LOG_PATH }} > error_logs.txt
+        continue-on-error: true
