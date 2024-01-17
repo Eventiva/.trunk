@@ -18,8 +18,7 @@ jobs:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     if: failure()
     run: |
-          echo 'Error logs: Actual error logs go here'
-      echo 'Error logs: Add relevant error logs here'
+          echo 'Error logs: ${{ steps.<step_name>.outputs.<output_name> }}'
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
