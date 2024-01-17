@@ -16,6 +16,6 @@ jobs:
     steps:
       - name: Save Error Logs to File
         run: |
-          echo 'Save error logs to file:'
+          echo 'Save error logs to file:' >> ${{ env.ERROR_LOG_PATH }}
           cat ${{ env.ERROR_LOG_PATH }} > error_logs.txt
         continue-on-error: true
