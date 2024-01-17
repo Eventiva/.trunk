@@ -39,7 +39,7 @@ runs-on: ubuntu-latest
             - name: Install Dependencies
         run: echo "Installing Dependencies"
       - name: Perform Trunk Check
-        continue-on-error: true
+        continue-on-error: false
         uses: trunk-io/trunk-action@v3
         with:
           check-mode: ${{ fromJSON(inputs.payload).checkMode }}
