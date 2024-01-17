@@ -21,6 +21,12 @@ jobs:
     steps:
       - name: Trunk Check
         run: script.sh
+        - name: Specific Error Message
+          run: echo 'Specific error message'
+        - name: Capture Errors
+          run: echo 'Errors captured'
+        - name: Log Workflow Run
+          run: echo 'Logging workflow run'
         env:
           ENV_VAR: value
         working-directory: ./
