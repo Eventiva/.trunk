@@ -13,13 +13,13 @@ permissions:
 jobs:
   check:
     name: DescriptiveJobName
-    runs-on: DesiredRunner
+    runs-on: ubuntu-latest
     concurrency:
       group: DesiredConcurrencyGroupHere
       cancel-in-progress: true
 
     steps:
       - name: DescriptiveAndInformativeStepName
-        uses: new-desired-action@v1
+        uses: actions/checkout@v2
         with:
-          desired-input: DesiredValue
+          ref: ${{ github.event.check_suite.head_sha }}
