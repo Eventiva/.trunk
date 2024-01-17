@@ -19,8 +19,16 @@ jobs:
       cancel-in-progress: true
 
     steps:
-          - name: Remove Existing Error Logs
-        continue-on-error: false
+            run: |
+              echo 'Print existing error logs:'
+              cat /path/to/error/logs
+            continue-on-error: true
+        env:
+          ERROR_LOG_PATH: /path/to/error/logs
+            run: |
+              echo 'Save error logs to file:'
+              cat /path/to/error/logs > error_logs.txt
+            continue-on-error: true
         run: |
         run: |
           echo 'Remove existing error logs: '
