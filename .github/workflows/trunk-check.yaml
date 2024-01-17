@@ -15,8 +15,6 @@ jobs:
     name: Trunk Check Job
     runs-on: ubuntu-latest
     concurrency:
-      group: example-concurrency-group
-      cancel-in-progress: false
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
 
