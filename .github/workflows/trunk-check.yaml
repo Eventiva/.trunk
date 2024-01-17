@@ -31,6 +31,6 @@ jobs:
         uses: trunk-io/trunk-action@v1
         with:
           continue-on-error: true
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  env:
+            GITHUB_TOKEN: actual_secret_value
           check-mode: payload
