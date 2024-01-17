@@ -20,7 +20,8 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v3
+        uses: trunk-io/trunk-action@v4
         with:
           error-logs: ${{ github.event.steps.check.outputs.errorLogs }}
           error-message: ${{ github.event.steps.check.outputs.errorMessage }}
+          new-parameter: value
