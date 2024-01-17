@@ -23,6 +23,7 @@ runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
           - ubuntu-latest
 
     steps:
+            - name: Error Handling and Logging
       - name: Error Handling and Logging
 
     # Error Handling and Logging
