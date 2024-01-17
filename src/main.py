@@ -7,12 +7,12 @@ import requests
 
 class TrunkIntegration:
     def __init__(self, api_key):
-        self.api_key = api_key
+        self.auth_token = api_key
         self.base_url = "https://api.trunk.io"
 
     def get_issues(self):
         try:
-            response = requests.get(f"{self.base_url}/issues", headers={"Authorization": self.api_key})
+            response = requests.get(f"{self.base_url}/issues", headers={"Bearer " + self.auth_token: self.api_key})
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
@@ -22,7 +22,7 @@ class TrunkIntegration:
     def create_issue(self, title, description):
         try:
             payload = {"title": title, "description": description}
-            response = requests.post(f"{self.base_url}/issues", headers={"Authorization": self.api_key}, json=payload)
+            response = requests.post(f"{self.base_url}/issues", headers={"Bearer " + self.auth_token: self.auth_token}, json=payload)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
@@ -36,7 +36,7 @@ class TrunkIntegration:
                 payload["title"] = title
             if description:
                 payload["description"] = description
-            response = requests.patch(f"{self.base_url}/issues/{issue_id}", headers={"Authorization": self.api_key}, json=payload)
+            response = requests.patch(f"{self.base_url}/issues/{issue_id}", headers={"Bearer " + self.auth_token: self.auth_token}, json=payload)
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
