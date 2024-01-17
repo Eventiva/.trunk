@@ -20,6 +20,9 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
-        with:
+        run: script.sh
+        env:
+          ENV_VAR: value
+        working-directory: ./
+          check-mode: payload
           check-mode: payload
