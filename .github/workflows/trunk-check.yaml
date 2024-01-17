@@ -27,12 +27,12 @@ jobs:
           try {
             # Add fallback mechanism for action failure
             # Example: Send notification or run a different action
-                      - name: Trunk Check
+                                - name: Trunk Check
               run: |
                 try {
                   # Add fallback mechanism for action failure
                   # Example: Send notification or run a different action
-                            - name: Trunk Check
+                          - name: Trunk Check
                               uses: trunk-io/trunk-action@v1
                               with:
                                 check-mode: payload
