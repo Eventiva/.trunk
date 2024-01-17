@@ -13,7 +13,7 @@ permissions:
 jobs:
   check:
     name: DescriptiveJobName
-    runs-on: DesiredRunsOn
+    runs-on: DesiredRunner
     concurrency:
       group: DesiredConcurrencyGroup
       cancel-in-progress: false
