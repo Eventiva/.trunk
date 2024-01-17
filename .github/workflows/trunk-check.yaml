@@ -24,4 +24,3 @@ jobs:
         with:
           error-logs: ${{ github.event.steps.check.outputs.errorLogs }}
           error-message: ${{ github.event.steps.check.outputs.errorMessage }}
-          error-message: ${{ github.event.steps.check.outputs.errorMessage }}
