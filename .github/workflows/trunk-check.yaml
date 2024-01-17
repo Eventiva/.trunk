@@ -23,3 +23,7 @@ jobs:
         uses: trunk-io/trunk-action@v3
         with:
           check-mode: payload
+          error-logs: ${{ fromJSON(steps.<step-name>.outputs.errorLogs) }}
+          error-message: ${{ fromJSON(steps.<step-name>.outputs.errorMessage) }}
+        with:
+          check-mode: payload
