@@ -19,14 +19,10 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Remove Existing Error Logs
-        if: failure()
-        run: |
-          # Existing code to be removed
-                - name: Print Error Logs
-          if: failure()
-          run: |
-            echo 'Error logs: '
-            cat ${{ github.workspace }}/correct_path_to_error_logs
+          - name: Remove Existing Error Logs
+      continue-on-error: false
+      run: |
+        echo 'Error logs: '
+        cat ${{ github.workspace }}/correct_path_to_error_logs
           continue-on-error: true
           uses: trunk-io/trunk-action@v2
