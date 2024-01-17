@@ -19,7 +19,7 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: DescriptiveStepName
+      - name: DescriptiveAndInformativeStepName
         uses: trunk-io/trunk-action@v1
         with:
           desired-input: DesiredValue
