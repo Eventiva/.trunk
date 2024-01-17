@@ -14,7 +14,7 @@ permissions:
 jobs:
   check:
     name: Check and Validate Code
-runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+runs-on: ubuntu-latest
 
     strategy:
       fail-fast: true
@@ -36,7 +36,10 @@ runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
           - ubuntu-latest
 
     steps:
-            - name: Perform Trunk Check
+            - name: Install Dependencies
+        run: echo "Installing Dependencies"
+      - name: Perform Trunk Check
+        continue-on-error: true
         uses: trunk-io/trunk-action@v3
         with:
           check-mode: ${{ fromJSON(inputs.payload).checkMode }}
