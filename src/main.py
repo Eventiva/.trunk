@@ -1,6 +1,10 @@
 # Import necessary modules or functions
 import module1
 import module2
+import traceback
+import logging
+import logging
+import traceback
 
 
 # Main logic for fixing the GitHub Actions run
