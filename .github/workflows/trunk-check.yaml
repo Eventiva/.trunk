@@ -29,9 +29,9 @@ jobs:
               echo 'Save error logs to file:'
               cat ${{ env.ERROR_LOG_PATH }} >> error_logs.txt
             continue-on-error: true
-        run: |
+          run: |
         run: |
           echo 'Remove existing error logs: '
-        cat /path/to/error/logs
+        rm ${{ env.ERROR_LOG_PATH }}
         continue-on-error: true
           uses: trunk-io/trunk-action@v2
