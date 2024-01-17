@@ -1,5 +1,5 @@
 # src/main.py
-import module_name
+from error_handler import ErrorLogHandler
 
 # Add additional imports as needed
 
@@ -17,12 +17,11 @@ class ErrorLogHandler:
 
 def main():
     error_handler = ErrorLogHandler()
-    error_handler.error_logs = "Actual error logs"
-    handle_error_logs(error_logs)
-    error_logs = "Actual error logs""
+    error_logs = "Actual error logs"
+    error_handler.handle_error_logs(error_logs)
     # Error logs
     """
-    handle_error_logs(error_logs)
+    # Removed unused line
 
 if __name__ == "__main__":
     main()
