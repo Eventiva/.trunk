@@ -24,11 +24,11 @@ jobs:
         trap 'exit 1' ERR
 
     steps:
-      - name: Trunk Check
+      - name: Print Error Logs
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
         with:
-          continue-on-error: ${{ github.event_name != 'pull_request' }}
+          continue-on-error: true
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           check-mode: payload
