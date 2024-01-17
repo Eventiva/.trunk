@@ -5,15 +5,22 @@ on:
     inputs:
       payload:
         description: For invocation by Trunk Check
+        required: true:
+    inputs:
+      payload:
+        description: For invocation by Trunk Check
         required: false
 
 permissions:
-  contents: read
+  contents: 
+    contents: write
+    issues: write
 
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    continue-on-error: ${{ fromJSON(inputs.payload).checkJobContinueOnError }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
@@ -22,4 +29,4 @@ jobs:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
         with:
-          check-mode: payload
+          check-mode: ${{ fromJSON(inputs.payload).checkMode }}
