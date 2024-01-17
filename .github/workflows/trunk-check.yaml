@@ -34,10 +34,11 @@ runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
           - ubuntu-latest
 
     steps:
-            - name: Set up Repository
-          - name: Set up Repository
-          - name: Set up Repository
+            - name: Perform Trunk Check
         uses: trunk-io/trunk-action@v3
+        with:
+          check-mode: ${{ fromJSON(inputs.payload).checkMode }}
+          additional-input: ${{ fromJSON(inputs.payload).additionalInput }}
         with:
           check-mode: ${{ fromJSON(inputs.payload).checkMode }}
           additional-input: ${{ fromJSON(inputs.payload).additionalInput }}
