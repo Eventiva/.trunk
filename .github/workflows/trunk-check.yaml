@@ -35,7 +35,8 @@ runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
 
     steps:
             - name: Set up Repository
-          - name: Trunk Check
+          - name: Set up Repository
+          - name: Set up Repository
         uses: trunk-io/trunk-action@v3
         with:
           check-mode: ${{ fromJSON(inputs.payload).checkMode }}
