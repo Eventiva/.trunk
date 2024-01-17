@@ -1,7 +1,7 @@
 # What is `.trunk`?
 
 Trunk Check uses `.trunk` to find issues in your repositories and pull requests. Learn more
-[here][check-github-integration].
+[here](https://docs.trunk.io/check/github-integration).
 
 To set up your `.trunk` repository, follow the steps below:
 1. Clone the [`trunk-io/.trunk-template`](https://github.com/trunk-io/.trunk-template) repository.
