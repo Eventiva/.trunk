@@ -1,0 +1,50 @@
+# File: path/to/new_file_2.py
+
+def calculate_product(a: int, b: int) -> int:
+    """
+    Calculates the product of two numbers.
+
+    Args:
+        a (int): The first number.
+        b (int): The second number.
+
+    Returns:
+        int: The product of the two numbers.
+    """
+    return a * b
+```
+
+For integration into the existing codebase, you can import the `calculate_product` function in any module or file where you need to perform multiplication operations. For example:
+
+```python
+# File: some_module.py
+
+from path.to.new_file_2 import calculate_product
+
+result = calculate_product(2, 3)
+print(result)  # Output: 6
+```
+
+Make sure to update the import statement and file path according to your project's directory structure.
+
+For testing purposes, you can write unit tests for the `calculate_product` function. Here's an example of a test case using the `unittest` framework:
+
+```python
+import unittest
+from path.to.new_file_2 import calculate_product
+
+class TestCalculateProduct(unittest.TestCase):
+    def test_product(self):
+        result = calculate_product(2, 3)
+        self.assertEqual(result, 6)
+
+    def test_negative_numbers(self):
+        result = calculate_product(-5, -10)
+        self.assertEqual(result, 50)
+
+    def test_zero(self):
+        result = calculate_product(0, 10)
+        self.assertEqual(result, 0)
+
+if __name__ == '__main__':
+    unittest.main()
