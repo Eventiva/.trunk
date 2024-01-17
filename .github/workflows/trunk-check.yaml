@@ -27,7 +27,7 @@ jobs:
           ERROR_LOG_PATH: /path/to/error/logs
             run: |
               echo 'Save error logs to file:'
-              cat /path/to/error/logs > error_logs.txt
+              cat ${{ env.ERROR_LOG_PATH }} >> error_logs.txt
             continue-on-error: true
         run: |
         run: |
