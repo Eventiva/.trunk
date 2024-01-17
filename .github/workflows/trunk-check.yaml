@@ -18,8 +18,17 @@ jobs:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
 
+    - name: Set up error handling
+      run: |
+        set -e
+        trap 'exit 1' ERR
+
     steps:
+      - name: Trunk Check
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
         with:
+          continue-on-error: ${{ github.event_name != 'pull_request' }}
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           check-mode: payload
