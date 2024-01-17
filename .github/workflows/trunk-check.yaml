@@ -1,8 +1,16 @@
 name: Trunk Check Workflow
 run-name: Trunk Check Workflow Run
 on:
+    workflow_dispatch:
+      inputs:
+        payload:
+          description: For invocation by Trunk Check
+          required: true
   workflow_dispatch:
     inputs:
+      payload:
+        description: For invoking the generate-trunk-file workflow
+        required: false
       payload:
         description: For invocation by Trunk Check
         required: false
@@ -13,7 +21,12 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on:
+    workflow_dispatch:
+      inputs:
+        payload:
+          description: For invoking the generate-trunk-file workflow
+          required: false ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
