@@ -22,5 +22,5 @@ jobs:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v3
         with:
-          error-logs: ${{ github.event.steps.check.outputs.errorLogs }}
+          error-logs: <<actual_error_logs>>
           error-message: ${{ github.event.steps.check.outputs.errorMessage }}
