@@ -1,25 +1,22 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Descriptive Workflow Name
+run-name: NewRunName
 on:
   workflow_dispatch:
     inputs:
       payload:
-        description: For invocation by Trunk Check
-        required: false
+        description: For invocation by Test Tool
+        required: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  check:
-    name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
-    concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+  verification_job:
+    name: Verification Job
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+      - name: Run Test Tool
+        uses: tool-org/tool-action@v2
         with:
-          check-mode: payload
+          mode: test
