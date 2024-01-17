@@ -10,9 +10,10 @@ def fix_github_actions_run():
     # Modify existing code, add error handling, or make configuration changes
 
     # Example code to fix the GitHub Actions run
-    result = module1.some_function()
-    if result == "error":
-        module2.handle_error()
+    try:
+        result = module1.some_function()
+    except Exception as e:
+        module2.handle_error(e)
 
 # Run the main logic
 fix_github_actions_run()
