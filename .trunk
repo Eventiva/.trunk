@@ -1,0 +1,20 @@
+import os
+import shutil
+from git import Repo
+
+def generate_trunk_file():
+    # Clone the trunk-io/.trunk-template repository
+    Repo.clone_from('https://github.com/trunk-io/.trunk-template', 'temp_dir')
+    
+    # Copy the contents of the cloned repository to the .trunk file
+    shutil.copytree('temp_dir', '.trunk')
+    
+    # Remove the temporary directory
+    shutil.rmtree('temp_dir')
+    
+    # Commit the changes
+    repo = Repo('.')
+    repo.index.add(['.trunk'])
+    repo.index.commit('feat/fix: the commit message')
+
+generate_trunk_file()
