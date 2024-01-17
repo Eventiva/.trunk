@@ -1,4 +1,5 @@
-name: Trunk Check
+name: Check and Validate Workflow
+  description: This workflow checks and validates the code before deployment.
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -13,7 +14,17 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+
+    # Error Handling and Logging
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+
+    steps:
+      - name: Set up Repository
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
