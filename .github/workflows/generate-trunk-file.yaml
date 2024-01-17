@@ -18,16 +18,19 @@ on:
 
 jobs:
   generate_trunk_file:
-    runs-  on:
+    runs-on: 
     workflow_dispatch: ubuntu-latest
 
     steps:
       - name: Clone trunk-io/.trunk-template repository
         run: |
+          cd .trunk
           git clone https://github.com/trunk-io/.trunk-template temp_dir
 
       - name: Copy contents to .trunk file
         run: |
+          cd .trunk
+          cd .trunk
           cp -R temp_dir/. .trunk
 
       - name: Remove temporary directory
