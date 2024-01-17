@@ -1,0 +1,28 @@
+name: Generate Trunk File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate_trunk_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone trunk-io/.trunk-template repository
+        run: |
+          git clone https://github.com/trunk-io/.trunk-template temp_dir
+
+      - name: Copy contents to .trunk file
+        run: |
+          cp -R temp_dir/. .trunk
+
+      - name: Remove temporary directory
+        run: |
+          rm -rf temp_dir
+
+      - name: Commit changes
+        run: |
+          git add .trunk
+          git commit -m "feat/fix: the commit message"
