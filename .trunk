@@ -1,0 +1,12 @@
+
+2. Navigate to the cloned repository:
+   ```
+   cd .trunk-template
+   ```
+
+3. Create a new repository on GitHub named `.trunk`.
+
+4. Push the contents of the `.trunk-template` repository to the newly created `.trunk` repository:
+   ```
+   git remote set-url origin https://github.com/<your-username>/.trunk.git
+   git push -u origin master
