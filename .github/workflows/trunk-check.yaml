@@ -1,25 +1,60 @@
-name: Trunk Check
+name: Trunk Check Workflow
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
     inputs:
       payload:
-        description: For invocation by Trunk Check
+        description: For invoking the Trunk Check workflow
         required: false
 
 permissions:
   contents: read
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  TRUNK_API_KEY: ${{ secrets.TRUNK_API_KEY}}
+
+jobs:
+  check:
+    name: ${{ fromJSON(inputs.payload).checkJobName }
+
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Set up Node.js
+    uses: actions/setup-node@v2
+    with:
+      node-version: 14
+
+  - name: Install dependencies
+    run: npm ci
+
+  - name: Run Trunk Check
+    run: npm run trunk-check
+    env:
+      TRUNK_API_KEY: ${{ secrets.TRUNK_API_KEY }}
+
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on:
+  pull_request:
+    branches:
+      - main ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v2
         with:
           check-mode: payload
