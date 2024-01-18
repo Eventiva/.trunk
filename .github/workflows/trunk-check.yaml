@@ -27,5 +27,19 @@ jobs:
           env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          yarn install
+          yarn build
+          yarn test
+          yarn capture-logs > error_logs.txt
+          echo "Error Logs" > error_logs.txt
+          cat error_logs.txt > captured_error_logs.txt
+          echo "Captured error logs:"
+          yarn install
+          yarn build
+          yarn test
+          yarn capture-logs > error_logs.txt
+          echo "Error Logs" > error_logs.txt
+          cat error_logs.txt > captured_error_logs.txt
+          echo "Captured error logs:"
           npm install @trunk/actions
           npx trunk check
