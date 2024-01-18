@@ -36,4 +36,5 @@ def fallback_action():
         Any relevant output or status of the fallback action.
     """
     # Add the fallback action logic here
+    # Perform the necessary fallback actions, such as notifying the team, rolling back changes, or recording the failure for analysis.
     return None
