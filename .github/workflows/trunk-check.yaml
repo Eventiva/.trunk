@@ -29,6 +29,10 @@ jobs:
         id: trunk-check
         run: |
           try {
+        id: trunk-check
+        run: |
+          try {
+            try {
             uses: trunk-io/trunk-action@v2
             with:
               check-mode: read
