@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Error Handling
-        run: |
+        run: |\n          from error_handling import handle_error, log_error, fallback_action\n          try:\n            # Add try-block content here\n          except Exception as e:\n            error_message = str(e)\n            log_error(error_message, 'Error details go here')\n            fallback_action()
           try 
           {
             # Add try-block content here
