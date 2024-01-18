@@ -19,3 +19,6 @@ jobs:
     uses: actions/checkout@v2
   - name: Display Workflow Logs
     run: echo ${{ job.status }}
+  - name: Display Error Logs
+    run: echo Error logs
+    run: echo ${{ job.status }}
