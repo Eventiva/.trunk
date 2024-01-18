@@ -19,7 +19,18 @@ jobs:
       cancel-in-progress: true
 
     steps:
+      - name: Error Handling
+        run: |
+          try 
+          {
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+            uses: trunk-io/trunk-action@v1
+          catch ::error
+          
+          fallback: |
+            # Add fallback mechanism here
+          
+          notify: |
+            # Add notification mechanism here
         with:
           check-mode: payload
