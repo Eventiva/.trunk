@@ -9,11 +9,14 @@ on:
 
 permissions:
   contents: read
+  cancel-on-feature-failure: true
 
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    env:
+      LOG_LEVEL: error
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
