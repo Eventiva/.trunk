@@ -25,7 +25,18 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Trunk Check
+            - name: Trunk Check
+        id: trunk-check
+        run: |
+          try {
+            uses: trunk-io/trunk-action@v2
+            with:
+              check-mode: read
+          } catch (error) {
+            core.error(error.message)
+            core.debug(error.stack)
+            core.setFailed(error.message)
+          }
         uses: trunk-io/trunk-action@v2
         with:
           check-mode: read
