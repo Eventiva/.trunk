@@ -15,8 +15,8 @@ permissions:
 
 jobs:
   check:
-    name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    name: MyDescriptiveCheckJobName
+    runs-on: ubuntu-latest
           # Set up concurrency
       # group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       # cancel-in-progress: true
