@@ -1,10 +1,13 @@
-name: Descriptive Workflow Name
-run-name: ${{ inputs.payload.checkWorkflowRunName }}
+name: Descriptive_workflow_for_Trunk_checks
+  # Descriptive name for the workflow
+
 on:
   workflow_dispatch:
     inputs:
       payload:
-        description: For invocation by Trunk Check
+        # For invocation by Trunk Check
+        description: Trunk check event
+        required: false
         required: false
 
 permissions:
@@ -14,9 +17,9 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
-    concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+          # Set up concurrency
+      # group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
+      # cancel-in-progress: true
 
     timeout-minutes: 10
     continue-on-error: true
@@ -25,8 +28,10 @@ jobs:
       SERVER_URL: ${{ secrets.SERVER_URL }}:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v4
+        # Set the check mode
         with:
           check-mode: payload
+          version: latest
           version: latest
         with:
           check-mode: payload
