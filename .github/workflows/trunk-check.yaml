@@ -23,6 +23,7 @@ jobs:
         run: |
           try 
           {
+            # Add try-block content here
       - name: Trunk Check
             uses: trunk-io/trunk-action@v1
           catch ::error
@@ -31,6 +32,7 @@ jobs:
             # Add fallback mechanism here
           
           notify: |
+            # Add notification mechanism here
             # Add notification mechanism here
         with:
           check-mode: payload
