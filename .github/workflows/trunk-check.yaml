@@ -1,4 +1,7 @@
 name: Trunk Check
+
+env:
+  NODE_VERSION: 14
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -14,6 +17,9 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    strategy:
+      matrix:
+        node-version: [12.x, 14.x, 16.x]
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
