@@ -1,11 +1,7 @@
-name: Check Workflow
+name: Check Workflow - Clarity
 run-name: ${{ github.event.inputs.checkWorkflowRunName }}
 on:
-  workflow_dispatch:
-    inputs:
-      payload:
-        description: For invocation by Trunk Check
-        required: false
+  push
 
 permissions:
   contents: read
@@ -18,10 +14,8 @@ jobs:
       group: ${{ github.event.inputs.concurrencyGroup }}
       cancel-in-progress: false
 
-    steps:
-
-  continue-on-error: true
-  uses: actions/checkout@v2
-  uses: actions/checkout@v2
-        with:
-          check-mode: ${{ github.event.inputs.checkMode }}
+   steps:
+  - name: Checkout
+    uses: actions/checkout@v2
+  - name: Run Necessary Actions
+    run: echo 'Running necessary actions'
