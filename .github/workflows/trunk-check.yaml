@@ -20,5 +20,5 @@ jobs:
   - name: Display Workflow Logs
     run: echo ${{ job.status }}
   - name: Display Error Logs
-    run: cat error.log
+    run: echo "Error Logs:" && cat error.log
     run: echo ${{ job.status }}
