@@ -1,14 +1,16 @@
 name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+run-name: Trunk-Check-Workflow
 on:
   workflow_dispatch:
     inputs:
       payload:
         description: For invocation by Trunk Check
-        required: false
+        description: Trigger for Trunk Check
+        required: true
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   check:
