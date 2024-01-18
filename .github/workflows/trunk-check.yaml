@@ -29,8 +29,8 @@ jobs:
         run: |
           try
       - name: Execute Trunk Check
-            continue-on-error: true
-            run: |
+            continue-on-error: ${{ failure() }}
+            run: |\n  if [[ "${{ job.status }}" == "failure" ]]; then\n    echo "Trunk Check action failed. Exiting with error."; exit 1;\n  fi
         uses: trunk-io/trunk-action@v1
           continue-on-failure: true
           continue-on-error: true
@@ -44,7 +44,7 @@ jobs:
     if [[ "$?" -ne 0 ]]; then
       echo "Trunk Check action failed. Sending notification or running alternative action."; exit 1;
     fi
-          continue-on-failure: true
+          
           run: |
             if [[ "$?" -ne 0 ]]; then
               echo "Trunk Check action failed."; exit 1;
