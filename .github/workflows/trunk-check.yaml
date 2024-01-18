@@ -21,9 +21,9 @@ jobs:
       # group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       # cancel-in-progress: true
 
-    timeout-minutes: 10
-    continue-on-error: true
-    needs: build
+    timeout-minutes: 15
+    continue-on-error: false
+    needs: trunk-check
     env:
       SERVER_URL: ${{ secrets.SERVER_URL }}:
       - name: Trunk Check
