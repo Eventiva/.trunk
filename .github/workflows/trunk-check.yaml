@@ -22,6 +22,6 @@ jobs:
 
   continue-on-error: true
   uses: actions/checkout@v2
-        uses: actions/checkout@v2
+  uses: actions/checkout@v2
         with:
           check-mode: ${{ github.event.inputs.checkMode }}
