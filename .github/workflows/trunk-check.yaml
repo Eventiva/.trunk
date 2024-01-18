@@ -31,15 +31,19 @@ jobs:
       - name: Execute Trunk Check
             continue-on-error: true
             run: |
-              try
         uses: trunk-io/trunk-action@v1
           continue-on-failure: true
+          continue-on-error: true
       - name: Fallback Mechanism
             continue-on-error: true
             run: |
               echo "Trunk Check action failed. Sending notification or running alternative action."
         with:
   continue-on-error: true
+        run: |
+    if [[ "$?" -ne 0 ]]; then
+      echo "Trunk Check action failed. Sending notification or running alternative action."; exit 1;
+    fi
           continue-on-failure: true
           run: |
             if [[ "$?" -ne 0 ]]; then
