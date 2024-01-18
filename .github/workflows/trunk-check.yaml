@@ -19,7 +19,7 @@ jobs:
       cancel-in-progress: false
 
     steps:
-      - name: Error Handling and Logging
+
   continue-on-error: true
   uses: actions/checkout@v2
         uses: actions/checkout@v2
