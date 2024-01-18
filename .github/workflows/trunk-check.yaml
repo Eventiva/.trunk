@@ -1,5 +1,5 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Check Workflow
+run-name: ${{ github.event.inputs.checkWorkflowRunName }}
 on:
   workflow_dispatch:
     inputs:
@@ -13,13 +13,15 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on: ubuntu-latest
     concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+      group: ${{ github.event.inputs.concurrencyGroup }}
+      cancel-in-progress: false
 
     steps:
-      - name: Trunk Check
+      - name: Error Handling and Logging
+  continue-on-error: true
+  uses: actions/checkout@v2
         uses: actions/checkout@v2
         with:
-          check-mode: payload
+          check-mode: ${{ github.event.inputs.checkMode }}
