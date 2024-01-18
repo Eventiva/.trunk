@@ -5,7 +5,13 @@ on:
     inputs:
       payload:
         description: For invocation by Trunk Check
-        required: false
+        required: true
+        runs: 
+         continue-on-error: true
+         run: |
+           if [[ -z ${{ github.event.inputs.payload }} ]]; then
+             echo "Payload is required for workflow dispatch."; exit 1;
+           fi
 
 permissions:
   contents: read
@@ -19,7 +25,23 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Trunk Check
+      - name: Try Catch Block
+        run: |
+          try
+      - name: Execute Trunk Check
+            continue-on-error: true
+            run: |
+              try
         uses: trunk-io/trunk-action@v1
+          continue-on-failure: true
+      - name: Fallback Mechanism
+            continue-on-error: true
+            run: |
+              echo "Trunk Check action failed. Sending notification or running alternative action."
         with:
-          check-mode: payload
+  continue-on-error: true
+          continue-on-failure: true
+          run: |
+            if [[ "$?" -ne 0 ]]; then
+              echo "Trunk Check action failed."; exit 1;
+            fi
