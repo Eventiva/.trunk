@@ -27,10 +27,10 @@ jobs:
             uses: trunk-io/trunk-action@v1
           catch ::error
           
-          fallback: |
+          fallback: |\n            # Add fallback mechanism here |
             # Add fallback mechanism here
           
-          notify: |
+          notify: |\n            # Add notification mechanism here |
             # Add notification mechanism here
             # Add notification mechanism here
         with:
