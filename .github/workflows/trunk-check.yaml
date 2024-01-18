@@ -1,7 +1,7 @@
 name: Trunk Check
 
 env:
-  NODE_VERSION: 14
+  NODE_VERSION: 16
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
@@ -16,10 +16,10 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: 16.x
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
@@ -28,4 +28,4 @@ jobs:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v2
         with:
-          check-mode: payload
+          check-mode: read
