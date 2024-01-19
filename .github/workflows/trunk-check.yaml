@@ -2,15 +2,35 @@ name: Trunk Check
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
-    inputs:
-      payload:
-        description: For invocation by Trunk Check
-        required: false
+    types: [workflow_run]
+    permissions:
+      contents: read
+  push:
+    paths:
+      - '**.yml'
+      - '**.yaml'
+      - '**.json'
+      - '**.lock'
+    permissions:
+      contents: write
+  pull_request:
+    types: [opened, synchronize]
+    permissions:
+      contents: read
+  schedule:
+    - cron: '0 21 * * 5'
 
 permissions:
   contents: read
 
 jobs:
+  notify_error:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Send error notification
+        run: |
+          # Notification steps here
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
@@ -19,6 +39,17 @@ jobs:
       cancel-in-progress: true
 
     steps:
+      - name: Set up job environment
+        run: |
+          mkdir -p ${{ runner.workspace }}/error_handling
+
+      - name: Run job with error handling
+        run: |
+          try {
+            # Add job steps here
+          } catch (error) {
+            # Handle error here
+          }
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
         with:
