@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  TRUNK_API_KEY: ${{ secrets.TRUNK_API_KEY }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add necessary steps based on the error logs and specific modifications
+
+      - name: Run Trunk Check
+        uses: trunk-io/check-action@v1
+        with:
+          api_key: ${{ env.TRUNK_API_KEY }}
