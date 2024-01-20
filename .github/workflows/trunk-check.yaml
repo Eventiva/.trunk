@@ -8,9 +8,22 @@ on:
         required: false
 
 permissions:
-  contents: read
+  contents:
+    actions: write
+    checks: write
+    statuses: write
 
 jobs:
+
+
+defaults:
+  run:
+    working-directory: ./
+    shell: bash
+
+steps:
+  - name: Setup Trunk CLI
+    uses: trunk-io/setup-trunk-cli@v1
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
@@ -20,6 +33,13 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        name: Trunk Action
+  run: |
+    try:
+      uses: trunk-io/trunk-action@v1
+    catch:
+      run: |
+        echo 'Error: Trunk Action Failed'
+        exit 1
         with:
           check-mode: payload
