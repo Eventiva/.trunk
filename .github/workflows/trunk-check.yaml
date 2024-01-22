@@ -13,10 +13,10 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    runs-on: [VALUE_TO_BE_REPLACED]
     concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+      group: [VALUE_TO_BE_REPLACED]
+      cancel-in-progress: [VALUE_TO_BE_REPLACED]
 
     steps:
       - name: Trunk Check
