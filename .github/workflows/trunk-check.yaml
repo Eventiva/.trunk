@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       payload:
-        description: For invocation by Trunk Check
+        description: Trunk payload for checking
         required: false
 
 permissions:
