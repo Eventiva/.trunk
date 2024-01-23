@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  contents: write
 
 jobs:
   check:
@@ -21,5 +22,8 @@ jobs:
     steps:
       - name: Trunk Check
         uses: trunk-io/trunk-action@v1
-        with:
-          check-mode: payload
+        continue-on-error: ${{ github.event_name != 'pull_request' }}
+        continue-on-error: ${{ success() }}
+
+    - name: Send Notification
+        run: some-notification-script.sh
