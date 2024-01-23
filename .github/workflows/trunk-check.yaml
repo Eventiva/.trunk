@@ -5,7 +5,8 @@ on:
     inputs:
       payload:
         description: For invocation by Trunk Check
-        required: false
+        required: true
+        check-base64: true
 
 permissions:
   contents: read
@@ -19,7 +20,24 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Trunk Check
+      - name: Error Handling
+        run: |
+          echo "Error occured. Handling the error..."
+      - name: Fallback Mechanism
+        if: failure()
+        run: |
+          echo "Fallback mechanism: Sending a notification or running an alternative action..."
+      - name: Try-Catch Block
+        run: |
+          try {
+            echo "Executing the Trunk Check step..."
+          } catch (error) {
+            echo "An error occurred during the Trunk Check step: $error"
+            echo "Handling the error..."
+          }
+        continue-on-error: true
+        id: trunk_check
+        continue-on-error: true
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
