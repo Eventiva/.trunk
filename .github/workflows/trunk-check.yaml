@@ -20,6 +20,9 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: new-action-or-script@v1
+        with:
+          input1: value1
+          input2: value2
         with:
           check-mode: payload
