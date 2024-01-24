@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout repository
@@ -18,8 +18,12 @@ jobs:
 
       # Add your steps here
 
-      - name: Run tests
+      - name: Run build and test commands
         run: |
-          # Add your test commands here
+          npm install
+          npm test
 
-      # Add more steps as needed
+      # # Add more steps as needed
+          - name: Deploy to production
+            run: |
+              # Add deployment commands here
