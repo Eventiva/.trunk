@@ -7,3 +7,5 @@ Your `.trunk` repository should always be created by generating it from the
 [`trunk-io/.trunk-template`](https://github.com/trunk-io/.trunk-template) repository.
 
 [check-github-integration]: https://docs.trunk.io/docs/check-github-integration
+
+The `.trunk` repository is used by Trunk Check to find issues in repositories and pull requests. It should always be created by generating it from the [`trunk-io/.trunk-template`](https://github.com/trunk-io/.trunk-template) repository.
