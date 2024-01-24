@@ -1,0 +1,27 @@
+# .trunk
+
+def find_issues(repository):
+    """
+    Find issues in the repository.
+
+    Args:
+        repository (str): The name of the repository.
+
+    Returns:
+        list: A list of issues found in the repository.
+    """
+    # Implementation to find issues in the repository
+    pass
+
+def find_pull_requests(repository):
+    """
+    Find pull requests in the repository.
+
+    Args:
+        repository (str): The name of the repository.
+
+    Returns:
+        list: A list of pull requests found in the repository.
+    """
+    # Implementation to find pull requests in the repository
+    pass
