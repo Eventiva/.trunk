@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Clone .trunk repository
+        run: git clone https://github.com/trunk-io/.trunk.git .trunk
+
+      - name: Run Trunk Check
+        run: |
+          cd .trunk
+          python -m trunk check
+
+      - name: Build and test
+        run: |
+          # Add your build and test commands here
