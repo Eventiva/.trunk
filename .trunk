@@ -10,7 +10,8 @@ def find_issues(repository):
     Returns:
         list: A list of issues found in the repository.
     """
-    # Implementation to find issues in the repository
+    # Configuration settings for Trunk Check 
+# Implementation to find issues in the repository
     pass
 
 def find_pull_requests(repository):
@@ -23,5 +24,6 @@ def find_pull_requests(repository):
     Returns:
         list: A list of pull requests found in the repository.
     """
-    # Implementation to find pull requests in the repository
+    # Configuration settings for Trunk Check 
+# Implementation to find pull requests in the repository
     pass
