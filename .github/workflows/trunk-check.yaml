@@ -1,14 +1,15 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Trunk Check Workflow
+run-name: ${{ github.run_id }}
 on:
   workflow_dispatch:
     inputs:
       payload:
-        description: For invocation by Trunk Check
-        required: false
+        description: Trunk Check workflow dispatch event
+        required: true
 
 permissions:
-  contents: read
+  contents: 'read'
+  actions: 'read'
 
 jobs:
   check:
@@ -16,7 +17,7 @@ jobs:
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+      cancel-in-progress: false
 
     steps:
       - name: Trunk Check
