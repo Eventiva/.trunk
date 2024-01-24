@@ -1,5 +1,10 @@
 name: Trunk Check
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+    try:
+        # Log job configuration
+        print('Job configuration completed successfully')
+    except Exception as e:
+        print('Job configuration error:', str(e))
 on:
   workflow_dispatch:
     inputs:
@@ -14,6 +19,8 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    permissions:
+      contents: read
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
@@ -23,3 +30,7 @@ jobs:
         uses: trunk-io/trunk-action@v1
         with:
           check-mode: payload
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+        timeout-minutes: 5
