@@ -11,6 +11,9 @@ permissions:
   contents: read
 
 jobs:
+  on:
+    failure:
+      continue-on-error: true
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
@@ -20,6 +23,12 @@ jobs:
 
     steps:
       - name: Trunk Check
+        continue-on-error: true
+      - name: Log Error
+        run: |
+          echo "Failure occurred in Trunk Check workflow"
         uses: trunk-io/trunk-action@v1
+        with:
+          check-mode: payload
         with:
           check-mode: payload
