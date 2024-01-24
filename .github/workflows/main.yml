@@ -1,0 +1,25 @@
+name: GitHub Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Add your steps here
+
+      - name: Run tests
+        run: |
+          # Add your test commands here
+
+      # Add more steps as needed
