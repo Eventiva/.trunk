@@ -1,0 +1,28 @@
+import os
+import subprocess
+
+def clone_trunk_template():
+    # Clone the trunk-io/.trunk-template repository
+    subprocess.run(["git", "clone", "https://github.com/trunk-io/.trunk-template", ".trunk-template"])
+
+def copy_trunk_template_contents():
+    # Copy the contents of the .trunk-template repository to .trunk
+    subprocess.run(["cp", "-r", ".trunk-template/*", ".trunk"])
+
+def cleanup():
+    # Remove the temporary .trunk-template directory
+    subprocess.run(["rm", "-rf", ".trunk-template"])
+
+def create_trunk_file():
+    # Create the .trunk file
+    with open(".trunk", "w") as f:
+        f.write("This is the .trunk file")
+
+def setup_trunk_repository():
+    clone_trunk_template()
+    copy_trunk_template_contents()
+    cleanup()
+    create_trunk_file()
+
+# Call the setup_trunk_repository function to create the .trunk file
+setup_trunk_repository()
