@@ -1,7 +1,7 @@
-name: Trunk Check
-run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
+name: Trunk Check Workflow
+run-name: ${{ github.sha }}
 on:
-  workflow_dispatch:
+  push:
     inputs:
       payload:
         description: For invocation by Trunk Check
@@ -13,13 +13,11 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
-    concurrency:
-      group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
-      cancel-in-progress: true
+    runs-on: ubuntu-latest
+
 
     steps:
-      - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+      - name: Run Trunk Check Action
+        uses: trunk-io/trunk-action@v2
         with:
           check-mode: payload
