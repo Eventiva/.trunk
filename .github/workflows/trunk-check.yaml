@@ -8,7 +8,8 @@ on:
         required: false
 
 permissions:
-  contents: read
+  permissions:
+  contents: write
 
 jobs:
   check:
@@ -20,6 +21,6 @@ jobs:
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v2
         with:
           check-mode: payload
