@@ -1,7 +1,7 @@
 name: Trunk Check
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
-  workflow_dispatch:
+    workflow_dispatch:
     inputs:
       payload:
         description: For invocation by Trunk Check
@@ -13,7 +13,9 @@ permissions:
 jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
-    runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+        runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    permissions:
+      contents: read
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
