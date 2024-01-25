@@ -2,10 +2,20 @@ name: Trunk Check
 run-name: ${{ fromJSON(inputs.payload).checkWorkflowRunName }}
 on:
   workflow_dispatch:
+    push:
+      branches:
+        - main
+      paths:
+        - .trunk/**
+      tags:
+        - ab4f508
+      permissions:
+        - contents: read
+  workflow_dispatch:
     inputs:
       payload:
         description: For invocation by Trunk Check
-        required: false
+        required: true
 
 permissions:
   contents: read
@@ -14,12 +24,18 @@ jobs:
   check:
     name: ${{ fromJSON(inputs.payload).checkJobName }}
     runs-on: ${{ fromJSON(inputs.payload).checkJobRunsOn }}
+    steps:
+      - name: Trunk Check
+        uses: trunk-io/trunk-action@v2
+        with:
+          check-mode: specific
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
     concurrency:
       group: ${{ fromJSON(inputs.payload).concurrencyGroup }}
       cancel-in-progress: true
 
     steps:
       - name: Trunk Check
-        uses: trunk-io/trunk-action@v1
+        uses: trunk-io/trunk-action@v2
         with:
           check-mode: payload
