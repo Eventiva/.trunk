@@ -1,6 +1,6 @@
 # What is `.trunk`?
 
-Trunk Check uses `.trunk` to find issues in your repositories and pull requests. Learn more
+Trunk Check uses `.trunk` to find issues in your repositories, pull requests, and GitHub Actions. Learn more
 [here][check-github-integration].
 
 Your \`trunk\.trunk\` repository should always be created by generating it from the
