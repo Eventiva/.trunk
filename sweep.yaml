@@ -41,7 +41,7 @@
 
 branch: "develop"
 gha_enabled: True
-description: |\n  No specific error logs have been provided to analyze the failing GitHub Actions.
+description: |\n  The GitHub Actions run failed with the following error logs: have been provided to analyze the failing GitHub Actions.
   "This repository is a subrepo of Eventiva/eventiva, that is a mono-repository built on a component first architecture. It is built using the Frappe Framework and uses MariaDB as the development database and Amazon Aurora as the production database. The repository is split into 4 tiers, with Tier 1 components being essential for an organizations software architecture to function, and Tier 4 components having no significant effect on the customer experience and do not significantly affect the organization. The folders are split int two main types of workflows.
 
   The main one is Frappe Framework Modules built with Python and javascript. These can be identified primarily by being within the modules folder, or by the python code located in the root of the module.
