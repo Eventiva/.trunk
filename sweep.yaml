@@ -46,7 +46,7 @@ description: |\n  The GitHub Actions run failed with the following error logs:
 
   The main one is Frappe Framework Modules built with Python and javascript. These can be identified primarily by being within the modules folder, or by the python code located in the root of the module.
   All code in these modules should be complete with docstrings. For Python, this means using docstrings.
-  In these frappe framework modules, testing is done using the Frappe Framework's unit testing framework and Cypress for UI testing. The test file should be named *_test.py. If a module is missing unit tests, they should be added. To write integration tests, create a .js file in the cypress/integration directory.
+  In these frappe framework modules, unit testing frappe modules using the Frappe Framework’s unit testing framework and Cypress. The test file should be named *_test.py. If a module is missing unit tests, they should be added and the module should be tested.. The test file should be named *_test.py. If a module is missing unit tests, they should be added. To write integration tests, create a .js file in the cypress/integration directory.
 
   The second type is Typescript modules built on the Bit.Dev framework for modular components. These can be identified by the lack of python scripts.
   All code in these modules should be complete with docstrings. For Typescript, this means using JSDoc.
